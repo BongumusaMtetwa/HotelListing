@@ -1,0 +1,16 @@
+# Avoid tracking build outputs
+/[Bb]in/
+/[Oo]bj/
+
+# IDE specific files
+.vs/
+.vscode/
+
+# User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS files
+.DS_Store
+Thumbs.db
