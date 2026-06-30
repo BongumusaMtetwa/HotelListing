@@ -1,0 +1,116 @@
+﻿using HotelListing.Api.Data;
+using HotelListing.Api.DTOs.Hotel;
+using HotelListing.Api.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace HotelListing.Api.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+[Authorize]
+public class HotelsController(IHotelsService hotelsService) : BaseApiController
+{
+
+    // GET: api/Hotels
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<GetHotelDto>>> GetHotels()
+    {
+        // SELECT * FROM Hotels LEFT JOIN Countries ON Hotels.CountryId = Countries.CountryId
+        //return await _context.Hotels
+        //    .ToListAsync();
+
+        var hotels = await hotelsService.GetHotelsAsync();
+
+        return Ok(hotels);
+    }
+
+    // GET: api/Hotels/5
+    [HttpGet("{id}")]
+    public async Task<ActionResult<GetHotelDto>> GetHotel(int id)
+    {
+        // SELECT * FROM Hotels LEFT JOIN Countries ON Hotels.CountryId = Countries.CountryId WHERE HotelId = id
+        // WHERE HotelId = id
+        //var hotel = await _context.Hotels
+        //    .Include(h => h.Country)    // Eager loading of the related Country navigation property
+        //    .FirstOrDefaultAsync(h => h.HotelId == id);
+
+        //if (hotel == null)
+        //{
+        //    return NotFound();
+        //}
+
+        //return hotel;
+
+        // SELECT HotelId, Name, Address, Rating, Country.Name AS Country FROM Hotels LEFT JOIN Countries ON Hotels.CountryId = Countries WHERE HotelId = id 
+        var hotel = await hotelsService.GetHotelAsync(id);
+
+        if (hotel == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(hotel);
+    }
+
+    // PUT: api/Hotels/5
+    [HttpPut("{id}")]
+    [Authorize(Roles = "Administrator")]
+    public async Task<IActionResult> PutHotel(int id, UpdateHotelDto hotelDto)
+    {
+        if (id != hotelDto.HotelId)
+        {
+            return BadRequest();
+        }
+
+        try
+        {
+            await hotelsService.UpdateHotelAsync(id, hotelDto);
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!await hotelsService.HotelExistsAsync(hotelDto.Name, id))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        return NoContent();
+    }
+
+    // POST: api/Hotels
+    [HttpPost]
+    [Authorize(Roles = "Administrator")]
+    public async Task<ActionResult<Hotel>> PostHotel(CreateHotelDto hotelDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        //Create Hotel here and save to database
+        var result = await hotelsService.CreateHotelAsync(hotelDto);
+        if (result.IsSuccess)
+        {
+            return CreatedAtAction("GetHotel", new { id = result.Value.HotelId }, result.Value);
+        }
+        else
+        {
+            return BadRequest(result.Errors);
+        }
+    }
+
+    // DELETE: api/Hotels/5
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Administrator")]
+    public async Task<IActionResult> DeleteHotel(int id)
+    {
+        await hotelsService.DeleteHotelAsync(id);
+        return NoContent();
+    }
+
+}

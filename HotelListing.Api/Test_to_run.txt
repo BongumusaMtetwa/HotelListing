@@ -1,0 +1,13 @@
+1. Create new admin user
+2. Login using a regular user
+3. Generate a new token to login with
+4. Create a new booking (Happy path - 3 nights)
+5. Create a new booking - different hotel, single night stay
+6. Create a new booking - Invalid (Check out before check in) - Expected a validation error (RFC 9457 Standard)
+7. Create a new booking - Invalid Guests (guests <=0)
+8. Create a new booking - Overlap test (Expect a Conflict)
+9. Update a booking - Extended stay
+10. Update booking - shrink stay and change guests 
+11. Update booking - Invalid Guests
+12. Admin confirm booking
+13. Admin cancel booking
