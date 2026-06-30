@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\HotelListing.Api.Common.csproj": {}
+    "c:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\HotelListing.Api.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\HotelListing.Api.Common.csproj": {
+    "c:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\HotelListing.Api.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\HotelListing.Api.Common.csproj",
+        "projectUniqueName": "c:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\HotelListing.Api.Common.csproj",
         "projectName": "HotelListing.Api.Common",
-        "projectPath": "C:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\HotelListing.Api.Common.csproj",
+        "projectPath": "c:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\HotelListing.Api.Common.csproj",
         "packagesPath": "C:\\Users\\bongumusa.mtetwa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\obj\\",
+        "outputPath": "c:\\Users\\bongumusa.mtetwa\\Research\\ASP.NET Development\\HotelListing\\HotelListing.Api.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
